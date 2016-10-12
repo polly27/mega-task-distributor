@@ -5,7 +5,7 @@ app.use(express.logger());
 const pg = require('pg');
 
 const connectionString = "postgres://fxgvaicejocbqu:dntJNb6sMiK64Pc02lqXnro-PE@" +
-	 "ec2-54-75-226-171.eu-west-1.compute.amazonaws.com:5432:/demja59qg5ck8s?ssl=true";
+	 "ec2-54-75-226-171.eu-west-1.compute.amazonaws.com:5432/demja59qg5ck8s";
 
 app.get('/', function(request, response) {
 	const client = new pg.Client(connectionString);
