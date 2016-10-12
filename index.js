@@ -11,7 +11,7 @@ app.get('/', function(request, response) {
 		if (err) throw err;
 		console.log('Connected to postgres! Getting schemas...');
 
-	    var query = client.query("select * from contact");
+	    var query = client.query("select * from salesforce.contact;");
 	    query.on("row", function (row, result) { 
 	            result.addRow(row); 
 	        });
