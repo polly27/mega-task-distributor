@@ -5,21 +5,20 @@ app.use(express.logger());
 var pg = require('pg');
 
 pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
-
-  client
-    .query('SELECT * FROM contact"')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
 
 app.get('/', function(request, response) {
+	pg.connect(process.env.DATABASE_URL, function(err, client) {
+		if (err) throw err;
+		console.log('Connected to postgres! Getting schemas...');
 
-	response.send('success');
-	
+	    var query = client.query("select * from contact");
+	    query.on("row", function (row, result) { 
+	            result.addRow(row); 
+	        });
+	    query.on("end", function (result) {          
+	            response.send(JSON.stringify(result.rows, null, "    "));
+	        });
+	});
 });
 
 var port = process.env.PORT || 5000;
