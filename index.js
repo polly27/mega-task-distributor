@@ -9,12 +9,7 @@ app.get('/', function(request, response) {
 	 "ec2-54-75-226-171.eu-west-1.compute.amazonaws.com:5432:/demja59qg5ck8s?ssl=true";
 
 	pg.connect(connectionString, function(err, client, done) {
-	   client.query('SELECT * FROM Contact', function(err, result) {
-	      done();
-	      if(err) return console.error(err);
-	      console.log(result.rows);
-	      response.send(result.rows);
-	   });
+	   response.send('result.rows');
 	});
 
 });
