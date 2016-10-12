@@ -10,7 +10,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
   console.log('Connected to postgres! Getting schemas...');
 
   client
-    .query('SELECT table_schema,table_name FROM information_schema.tables;')
+    .query('SELECT * FROM Client;')
     .on('row', function(row) {
       console.log(JSON.stringify(row));
     });
