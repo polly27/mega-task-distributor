@@ -23,34 +23,13 @@
                 <div class="col-md-12 column">
                     <div class="jumbotron">
                         <h1>
-                            Products
+                            Total sum {{sum}}
                         </h1>
                     </div>
                 </div>
             </div>            
             
-            <div class="row clearfix"> 
-                <table class="table table-bordered table-hover table-condensed">
-                    <thead>
-                        <tr>
-                            <th>  Id  </th>
-                            <th>  Name </th>
-                            <th>  Description </th>
-                            <th>  Amount </th>
-                            <th>  Cost Per Item </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="item in dataset">
-                            <td> {{item.Name}} </td>
-                            <td> {{item.Name__c}} </td>
-                            <td> {{item.Description__c}} </td>
-                            <td> {{item.Amount__c}} </td>
-                            <td> {{item.Cost__c}} </td>
-                        </tr>
-                    </tbody>
-                </table>                  
-            </div>
+
         </div>        
         <script> 
             var myApp = angular.module('postgreSQL',[ ]);              
@@ -58,11 +37,10 @@
                 $scope.getAllRec = function(){ 
                     $http({method: 'GET', url: '/getProducts'}).
                         success(function(data, status) { 
-                            alert(data);
-                            $scope.dataset = JSON.parse(data); 
+                            $scope.sum = data; 
                         }).
                         error(function(data, status) {
-                            $scope.dataset = data || "Request failed "; 
+                            $scope.sum = "Request failed "; 
                       }); 
                 }            
                 $scope.getAllRec();                
