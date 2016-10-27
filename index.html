@@ -60,8 +60,9 @@
                     $http({method: 'GET', url: '/getProducts'}).
                         success(function(data, status) { 
                             alert(data);
-                            $scope.dataset = JSON.parse(data);
-                            alert($scope.dataset[0].Name__c);
+                            //$scope.dataset = JSON.parse(data);
+                            alert(data[0].Name__c);
+                            $scope.dataset = JSON.parse(data.toString());
                         }).
                         error(function(data, status) {
                             alert("error " + data);
