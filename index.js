@@ -15,10 +15,11 @@ app.get('/getProducts', function(request, response) {
 		if (err) throw err;
 		var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c");
 		var total = 0;
+		console.log("total " + total);
    	    query.on("row", function (row, result) { 
    	    	    result.addRow(row);
    	    	    total += row.Amount__c * row.Cost__c;
-   	    		console.log("total " + total);    
+   	    	    console.log("total " + total + ", amount " + row.Amount__c + ", cost " + row.Cost__c);    
 	        });
    	    query.on("end", function (result) {
    	    	console.log(JSON.stringify(result.rows, null, "	   ") + "/n");
