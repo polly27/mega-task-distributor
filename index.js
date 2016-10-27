@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
 app.get('/getProducts', function(request, response) {
 	pg.connect(process.env.DATABASE_URL, function(err, client) {
 		if (err) throw err;
-		var query = client.query("select Id, Name, Name__c, Discription__c, Amount__c, Cost__c from salesforce.Product__c");
+		var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c");
 		var sum = 0;
    	    query.on("row", function (row, result) { 
    	    		console.log("PRODUCT " + JSON.stringify(row));
