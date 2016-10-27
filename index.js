@@ -20,7 +20,8 @@ app.get('/getProducts', function(request, response) {
 	            result.addRow(row);
 	        });
    	    query.on("end", function (result) {    
-	   	    response.send(result.rows[0].Name__c);
+   	    	console.log("R E S U L T " + JSON.stringify(result.rows, null, "    ") + "\n");
+	   	    response.send(JSON.stringify(result.rows, null, "    ") + "\n");
 	   	});
 	});
 });
