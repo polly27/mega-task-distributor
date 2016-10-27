@@ -18,7 +18,9 @@ app.get('/getProducts', function(request, response) {
 	            result.addRow(row); 
 	        });
 	    query.on("end", function (result) {          
-	            response.send(JSON.stringify(result.rows, null, '	'));
+	            response.writeHead(200, {'Content-Type': 'text/plain'});
+	            response.write(JSON.stringify(result.rows, null, "    ") + "\n");
+	            response.end();  
 	        });
 	});
 });
