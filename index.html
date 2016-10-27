@@ -22,18 +22,21 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div class="jumbotron">
-                        <h1>
-                            Catalog
-                        </h1>
+                        <h2 style="display: block; text-align: center;">
+                            Distributor
+                        </h2>
                     </div>
                 </div>
             </div>            
             
             <div class="row clearfix"> 
-                <table class="table table-bordered table-hover table-condensed">
+                <h3> The shop has products with total cost {{dataset.total | currency}} </h3>
+
+                <h3> The Catalog </h3>
+                <table class="table table-bordered table-hover table-condensed" style="max-height: 300px; overflow-y: auto;">
                     <thead>
                         <tr>
-                            <th>  Id  </th>
+                            <th>  №  </th>
                             <th>  Name </th>
                             <th>  Description </th>
                             <th>  Amount </th>
@@ -41,12 +44,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in dataset">
-                            <td> {{item.name}} </td>
+                        <tr ng-repeat="item in dataset.catalog track by $index">
+                            <td> {{index + 1}}. </td>
                             <td> {{item.name__c}} </td>
                             <td> {{item.description__c}} </td>
                             <td> {{item.amount__c}} </td>
-                            <td> {{item.cost__c}} </td>
+                            <td min-width="20px"> {{item.cost__c}} </td>
                         </tr>
                     </tbody>
                 </table>                  

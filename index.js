@@ -21,9 +21,11 @@ app.get('/getProducts', function(request, response) {
    	    	    total += row.amount__c * row.cost__c;
 	        });
    	    query.on("end", function (result) {
-   	    	console.log(JSON.stringify(result.rows, null, "	   "));
-   	    	console.log(total);
-   	    	response.send(JSON.stringify(result.rows));
+   	    	var map = new Map();
+   	    	map.set("catalog", JSON.stringify(result.rows));
+   	    	map.set("total", total);
+   	    	console.log(map);
+   	    	response.send(map);
 	   	});
 	});
 });
