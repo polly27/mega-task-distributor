@@ -2,10 +2,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Distributor</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"/>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"/>
     </head>
     <body ng-app="postgreSQL">
         <div class="container" style="margin-top:20px;"  ng-controller="postgreSQLCtrl">
@@ -42,7 +43,6 @@
                 </table>                  
             </div>
         </div>        
-        <script src="lib/angular.min.js"></script>
         <script> 
             var myApp = angular.module('postgreSQL',[ ]);              
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
@@ -58,5 +58,6 @@
                 $scope.getAllRec();                
             }]); 
         </script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
     </body>    
 </html>
