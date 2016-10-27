@@ -24,7 +24,7 @@ app.get('/getProducts', function(request, response) {
    	    	map.set("catalog", JSON.stringify(result.rows));
    	    	map.set("total", total);
    	    	console.log(map);
-   	    	response.send(map);
+   	    	response.send(JSON.stringify(map));
 	   	});
 	});
 });
