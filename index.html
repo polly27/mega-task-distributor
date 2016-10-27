@@ -58,7 +58,7 @@
                 $scope.getAllRec = function(){ 
                     $http({method: 'GET', url: '/getProducts'}).
                         success(function(data, status) { 
-                            alert(data[0].Name);
+                            alert(data[0].Name__c);
                             $scope.dataset = JSON.parse(data); 
                         }).
                         error(function(data, status) {
