@@ -16,7 +16,7 @@ app.get('/getProducts', function(request, response) {
 	    var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c;");
 	    var sum = 0;
 	    query.on("row", function (row, result) { 
-	            sum += row.Cost__c * rom.Amount__c; 
+	            sum += row.Cost__c * row.Amount__c; 
 	        });
 	    query.on("end", function (result) {          
 	            response.send(sum);  
