@@ -14,13 +14,15 @@ app.get('/getProducts', function(request, response) {
 	pg.connect(process.env.DATABASE_URL, function(err, client) {
 		if (err) throw err;
 		var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c");
+		var total = 0;
    	    query.on("row", function (row, result) { 
    	    	    result.addRow(row);
+   	    	    total += row.get('Amount__c') * row.get('Cost__c');
 	        });
    	    query.on("end", function (result) {
-   	    	console.log(JSON.stringify(result.rows));
    	    	console.log(JSON.stringify(result.rows, null, "	   ") + "/n");
-   	    	response.send(JSON.stringify(result.rows, null, "	"));
+   	    	console.log(total);
+   	    	response.send(JSON.stringify(result.rows));
 	   	});
 	});
 });

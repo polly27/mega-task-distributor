@@ -56,20 +56,17 @@
         <script> 
             var myApp = angular.module('postgreSQL',[ ]);              
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
-                $scope.getAllRec = function(){ 
-                    $http({method: 'GET', url: '/getProducts'}).
-                        success(function(data, status) { 
-                            alert(data);
-                            //$scope.dataset = JSON.parse(data);
-                            alert(data[0].Name__c);
-                            $scope.dataset = JSON.parse(data.toString());
-                        }).
-                        error(function(data, status) {
-                            alert("error " + data);
-                            $scope.dataset = "Request failed "; 
-                      }); 
-                }            
-                $scope.getAllRec();                
+                $http({method: 'GET', url: '/getProducts'}).
+                    success(function(data, status) { 
+                        alert(data);
+                        //$scope.dataset = JSON.parse(data);
+                        alert(data[0].get('Name__c'));
+                        $scope.dataset = JSON.parse(data.toString());
+                    }).
+                    error(function(data, status) {
+                        alert("error " + data);
+                        $scope.dataset = "Request failed "; 
+                });             
             }]); 
         </script>        
     </body>    
