@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
 
 	    var query = client.query("select * from salesforce.Product__c;");
 	    query.on("row", function (row, result) { 
-	            result.addRow(row.Name__c + '/n'); 
+	            result.addRow(row.Name + '/n'); 
 	        });
 	    query.on("end", function (result) {          
 	            response.send(result.rows);
