@@ -13,7 +13,9 @@ app.get('/', function(request, response) {
 app.get('/getProducts', function(request, response) {
 	pg.connect(process.env.DATABASE_URL, function(err, client) {
 		if (err) throw err;
-	    response.send('852852');
+		var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c;");
+	    var sum = 0;
+		response.send(sum);
 	});
 });
 
