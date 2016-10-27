@@ -17,7 +17,8 @@ app.get('/getProducts', function(request, response) {
 		var total = 0;
    	    query.on("row", function (row, result) { 
    	    	    result.addRow(row);
-   	    	    total += row.get('Amount__c') * row.get('Cost__c');
+   	    	    total += row.Amount__c * row.Cost__c;
+   	    		console.log("total " + total);    
 	        });
    	    query.on("end", function (result) {
    	    	console.log(JSON.stringify(result.rows, null, "	   ") + "/n");
