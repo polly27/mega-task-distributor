@@ -59,9 +59,11 @@
                 $scope.getAllRec = function(){ 
                     $http({method: 'GET', url: '/getProducts'}).
                         success(function(data, status) { 
+                            alert(data);
                             $scope.dataset = JSON.parse(data); 
                         }).
                         error(function(data, status) {
+                            alert("error " + data);
                             $scope.dataset = "Request failed "; 
                       }); 
                 }            
