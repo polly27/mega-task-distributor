@@ -57,7 +57,7 @@
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
                 $scope.getAllRec = function(){ 
                     alert('start');
-                     $http({method: 'GET', url: '/'}).
+                     $http({method: 'GET', url: '/getProducts'}).
                         success(function(data, status) { 
                             alert(data);
                             $scope.dataset = JSON.parse(data); 
