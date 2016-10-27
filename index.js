@@ -18,7 +18,9 @@ app.get('/getProducts', function(request, response) {
    	    query.on("row", function (row, result) { 
 	            result.addRow(row);
 	        });
-   	    response.send(result.rows[0].Name__c);
+   	     query.on("end", function (result) {    
+	   	    response.send(result.rows[0].Name__c);
+	   	}
 	});
 });
 
