@@ -42,11 +42,11 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in dataset">
-                            <td> {{item.Name}} </td>
-                            <td> {{item.Name__c}} </td>
-                            <td> {{item.Description__c}} </td>
-                            <td> {{item.Amount__c}} </td>
-                            <td> {{item.Cost__c}} </td>
+                            <td> {{item.name}} </td>
+                            <td> {{item.name__c}} </td>
+                            <td> {{item.description__c}} </td>
+                            <td> {{item.amount__c}} </td>
+                            <td> {{item.cost__c}} </td>
                         </tr>
                     </tbody>
                 </table>                  
@@ -58,10 +58,7 @@
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
                 $http({method: 'GET', url: '/getProducts'}).
                     success(function(data, status) { 
-                        alert(data);
-                        //$scope.dataset = JSON.parse(data);
-                        alert(data[0].get('Name__c'));
-                        $scope.dataset = JSON.parse(data.toString());
+                        $scope.dataset = JSON.parse(data);
                     }).
                     error(function(data, status) {
                         alert("error " + data);
