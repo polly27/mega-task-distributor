@@ -61,7 +61,6 @@
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
                 $http({method: 'GET', url: '/getProducts'}).
                     success(function(data, status) {
-                        data = (Map) data;
                         alert(data.get('total'));
                         $scope.dataset = {
                             catalog : data.get('catalog'),
