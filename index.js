@@ -20,7 +20,7 @@ app.get('/getProducts', function(request, response) {
    	    query.on("end", function (result) {
    	    	console.log(JSON.stringify(result.rows));
    	    	console.log(JSON.stringify(result.rows, null, "	   ") + "/n");
-   	    	response.send(JSON.stringify(result.rows));
+   	    	response.send(JSON.stringify(result.rows, null, "	"));
 	   	});
 	});
 });
