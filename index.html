@@ -23,12 +23,34 @@
                 <div class="col-md-12 column">
                     <div class="jumbotron">
                         <h1>
-                            Total sum {{sum}}
+                            {{sum}}
                         </h1>
                     </div>
                 </div>
             </div>            
             
+            <div class="row clearfix"> 
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>  Id  </th>
+                            <th>  Name </th>
+                            <th>  Description </th>
+                            <th>  Amount </th>
+                            <th>  Cost per item </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in dataset">
+                            <td> {{item.Name}} </td>
+                            <td> {{item.Name__c}} </td>
+                            <td> {{item.Description__c}} </td>
+                            <td> {{item.Amount__c}} </td>
+                            <td> {{item.Cost__c}} </td>
+                        </tr>
+                    </tbody>
+                </table>                  
+            </div>
 
         </div>        
         <script> 
@@ -37,10 +59,10 @@
                 $scope.getAllRec = function(){ 
                     $http({method: 'GET', url: '/getProducts'}).
                         success(function(data, status) { 
-                            $scope.sum = data; 
+                            $scope.dataset = JSON.parse(data); 
                         }).
                         error(function(data, status) {
-                            $scope.sum = "Request failed "; 
+                            $scope.dataset = "Request failed "; 
                       }); 
                 }            
                 $scope.getAllRec();                
