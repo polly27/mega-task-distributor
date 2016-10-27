@@ -11,13 +11,15 @@ app.get('/', function(request, response) {
 		if (err) throw err;
 		console.log('Connected to postgres! Getting schemas...');
 
-	    var query = client.query("select * from salesforce.Product__c;");
+	    var query = client.query("select Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c;");
 	    query.on("row", function (row, result) { 
 	            result.addRow(row); 
 	        });
 	    query.on("end", function (result) {          
 	            response.send(result.rows);
 	        });
+
+	    response.sendfile('index.html');
 	});
 });
 
