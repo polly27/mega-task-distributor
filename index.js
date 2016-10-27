@@ -11,12 +11,12 @@ app.get('/', function(request, response) {
 		if (err) throw err;
 		console.log('Connected to postgres! Getting schemas...');
 
-	    var query = client.query("select * from salesforce.contact;");
+	    var query = client.query("select * from salesforce.Product__c;");
 	    query.on("row", function (row, result) { 
-	            result.addRow(row); 
+	            result.addRow(row.Name__c + '/n'); 
 	        });
 	    query.on("end", function (result) {          
-	            response.send(JSON.stringify(result.rows, null, "    "));
+	            response.send(result.rows);
 	        });
 	});
 });
