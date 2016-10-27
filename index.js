@@ -16,11 +16,12 @@ app.get('/getProducts', function(request, response) {
 		var query = client.query("select * from salesforce.Product__c");
 		var sum = 0;
    	    query.on("row", function (row, result) { 
+   	    	console.log("PRODUCT " + row);
 	            result.addRow(row);
 	        });
-   	     query.on("end", function (result) {    
+   	    query.on("end", function (result) {    
 	   	    response.send(result.rows[0].Name__c);
-	   	}
+	   	});
 	});
 });
 
