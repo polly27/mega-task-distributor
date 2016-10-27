@@ -18,8 +18,8 @@ app.get('/getProducts', function(request, response) {
 		console.log("total " + total);
    	    query.on("row", function (row, result) { 
    	    	    result.addRow(row);
-   	    	    total += row.Amount__c * row.Cost__c;
-   	    	    console.log("total " + total + ", amount " + row.Amount__c + ", cost " + row.Cost__c);    
+   	    	    total += row.amount__c * row.cost__c;
+   	    	    console.log("total " + total + ", amount " + row.amount__c + ", cost " + row.cost__c);    
 	        });
    	    query.on("end", function (result) {
    	    	console.log(JSON.stringify(result.rows, null, "	   ") + "/n");
