@@ -18,8 +18,8 @@ app.get('/getCatalog', function(request, response) {
    	  	    result.addRow(row);
    	    });
    	    query.on("end", function (result) {
-   	    	console.log('result ' + JSON.stringify(result));
-   	    	response.send(JSON.stringify(result));
+   	    	console.log('result ' + JSON.stringify(result.rows));
+   	    	response.send(JSON.stringify(result.rows));
 	   	});
 	});
 });
