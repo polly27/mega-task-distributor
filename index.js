@@ -34,7 +34,7 @@ app.get('/getTotal', function(request, response) {
 	    });
    	    query.on("end", function (result) {
    	    	console.log('total ' + total);
-   	    	response.send(total);
+   	    	response.send(JSON.stringify(total));
 	   	});
 	});
 });

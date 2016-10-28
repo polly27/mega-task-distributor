@@ -45,8 +45,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in catalog track by $index">
-                                <td width="10px"> {{index + 1}}. </td>
+                            <tr ng-repeat="item in catalog">
+                                <td width="10px"> {{$index + 1}}. </td>
                                 <td> {{item.name__c}} </td>
                                 <td> {{item.description__c}} </td>
                                 <td> {{item.amount__c}} </td>
