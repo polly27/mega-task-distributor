@@ -63,20 +63,13 @@
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
                 $http({method: 'GET', url: '/getCatalog'}).
                     success(function(data, status) {
-                        $scope.catalog = data;
+                        $scope.catalog = data.catalog;
+                        $scope.total = data.total;
                     }).
                     error(function(data, status) {
                         $scope.error = "Request for CATALOG failed "; 
                 });             
-                
-                $http({method: 'GET', url: '/getTotal'}).
-                    success(function(data, status) {
-                        $scope.total = data;
-                    }).
-                    error(function(data, status) {
-                        $scope.error = "Request for TOTAL failed "; 
-                }); 
-                   
+                                   
             }]); 
         </script>        
     </body>    
