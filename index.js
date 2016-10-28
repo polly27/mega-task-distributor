@@ -10,7 +10,7 @@ app.get('/', function(request, response) {
 	response.sendfile('index.html');
 });
 
-app.get('/getProducts', function(request, response) {
+app.get('/getCatalog', function(request, response) {
 	pg.connect(process.env.DATABASE_URL, function(err, client) {
 		if (err) throw err;
 		var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c");

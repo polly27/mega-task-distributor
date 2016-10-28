@@ -66,13 +66,14 @@
                     error(function(data, status) {
                         $scope.error = "Request for CATALOG failed "; 
                 });             
+                
                 $http({method: 'GET', url: '/getTotal'}).
                     success(function(data, status) {
                         $scope.total = data;
                     }).
                     error(function(data, status) {
                         $scope.error = "Request for TOTAL failed "; 
-                });             
+                });    
             }]); 
         </script>        
     </body>    
