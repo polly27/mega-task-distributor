@@ -15,10 +15,11 @@ app.get('/getProducts', function(request, response) {
 		if (err) throw err;
 		var query = client.query("select Id, Name, Name__c, Description__c, Amount__c, Cost__c from salesforce.Product__c");
 		query.on("row", function (row, result) { 
-   	    	    result.addRow(row);
-   	        });
+   	  	    result.addRow(row);
+   	    });
    	    query.on("end", function (result) {
-   	    	response.send(JSON.stringify(result));
+   	    	console.log('result ' + result);
+   	    	response.send(result);
 	   	});
 	});
 });
@@ -29,9 +30,10 @@ app.get('/getTotal', function(request, response) {
 		var query = client.query("select Amount__c, Cost__c from salesforce.Product__c");
 		var total = 0;
 		query.on("row", function (row, result) { 
-   	    	    total += row.amount__c * row.cost__c;
-	        });
+   	 	    total += row.amount__c * row.cost__c;
+	    });
    	    query.on("end", function (result) {
+   	    	console.log('total ' + total);
    	    	response.send(total);
 	   	});
 	});
