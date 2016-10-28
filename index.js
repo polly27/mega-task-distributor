@@ -1,12 +1,9 @@
 var express = require('express'),
-    request = require('request'),
-    bodyParser = require('body-parser'),
-    app = express();
+    app = express(),
+    pg = require('pg');
 
 app.use(express.logger());
-app.use(bodyParser.json());
 
-var pg = require('pg');
 pg.defaults.ssl = true;
 
 app.get('/', function(request, response) {
