@@ -30,7 +30,7 @@
             </div>            
             
             <div class="row clearfix"> 
-                <h3> The shop has products with total cost {{dataset.total | currency}} </h3>
+                <h3> The shop has products with total cost {{total | currency}} </h3>
 
                 <h3> The Catalog </h3>
                 <table class="table table-bordered table-hover table-condensed" style="max-height: 300px; overflow-y: auto;">
@@ -44,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in dataset.catalog track by $index">
+                        <tr ng-repeat="item in catalog track by $index">
                             <td> {{index + 1}}. </td>
                             <td> {{item.name__c}} </td>
                             <td> {{item.description__c}} </td>
@@ -59,17 +59,19 @@
         <script> 
             var myApp = angular.module('postgreSQL',[ ]);              
             myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {              
-                $http({method: 'GET', url: '/getProducts'}).
+                $http({method: 'GET', url: '/getCatalog'}).
                     success(function(data, status) {
-                        alert(data[0]);
-                        $scope.dataset = {
-                            catalog : data.get('catalog'),
-                            total : data.get('total')
-                        };
+                        $scope.catalog = data;
                     }).
                     error(function(data, status) {
-                        alert("error " + data);
-                        $scope.dataset = "Request failed "; 
+                        $scope.error = "Request for CATALOG failed "; 
+                });             
+                $http({method: 'GET', url: '/getTotal'}).
+                    success(function(data, status) {
+                        $scope.total = data;
+                    }).
+                    error(function(data, status) {
+                        $scope.error = "Request for TOTAL failed "; 
                 });             
             }]); 
         </script>        
