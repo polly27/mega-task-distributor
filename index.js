@@ -19,7 +19,7 @@ app.get('/getCatalog', function(request, response) {
    	    });
    	    query.on("end", function (result) {
    	    	console.log('result ' + result);
-   	    	response.send(result);
+   	    	response.send(JSON.stringify(result));
 	   	});
 	});
 });
