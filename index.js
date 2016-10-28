@@ -18,7 +18,6 @@ app.get('/getCatalog', function(request, response) {
    	  	    result.addRow(row);
    	    });
    	    query.on("end", function (result) {
-   	    	console.log('result ' + JSON.stringify(result.rows));
    	    	response.send(JSON.stringify(result.rows));
 	   	});
 	});
@@ -33,7 +32,6 @@ app.get('/getTotal', function(request, response) {
    	 	    total += row.amount__c * row.cost__c;
 	    });
    	    query.on("end", function (result) {
-   	    	console.log('total ' + total);
    	    	response.send(JSON.stringify(total));
 	   	});
 	});
